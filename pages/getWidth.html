@@ -8,6 +8,8 @@
     <meta name="Keywords" content="">
     <meta name="Description" content="">
     <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="../js/goToHome.js"></script>
     <title>弹出浏览可视区域宽度和高度——haley</title>
     <style>
@@ -17,7 +19,7 @@
             display: none;
             /*border:1px solid #f00;*/
         }
-        .btns>input[type='button']{
+/*         .btns>input[type='button']{
             height:50px;
             width:200px;
             border-radius:10px;
@@ -26,7 +28,7 @@
         }
         .btns>input[type='button']:hover{
             opacity:0.7;
-        }
+        } */
     </style>
 </head>
 <body>
@@ -35,9 +37,9 @@
     <h1 class="h">屏幕高度：<b></b></h1>
 </div>
 <div class="btns">
-    <input type="button" value="加个滚动条重新看一下" id="addScroll"/>
-    <input type="button" value="去掉滚动条" id="removeScroll"/>
-    <input type="button" value="重新测量宽高" id="btnGetSize"/>
+    <input type="button"  class="btn btn-info" value="加个滚动条重新看一下" id="addScroll"/>
+    <input type="button"  class="btn btn-info" value="去掉滚动条" id="removeScroll"/>
+    <input type="button"  class="btn btn-info" value="重新测量宽高" id="btnGetSize"/>
 </div>
 <div class="con"></div>
 <script>
