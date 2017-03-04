@@ -4,7 +4,7 @@
 window.addEventListener('load',function(){
     (function(){
         var links=[
-            {link:"../index",t:"返回首页"}//link为页面的地址，t为跳转页面的提示文字，数量依据需求添加
+            {link:"https://haley168.github.io/toolsHaley/index",t:"返回首页"}//link为页面的地址，t为跳转页面的提示文字，数量依据需求添加
             //{link:"userCenter",t:"进入用户中心"},
         ];
         var len=links.length;
