@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width,height=device-height">
+    <meta charset="UTF-8">
+    <meta name="Author" content="haley">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="../goHome.js"></script>
+    <title>unicode转码</title>
+    <style>
+        .container{
+            background: #f2f2f2;
+        }
+        .fr{
+            float:right;
+        }
+    </style>
+</head>
+<body>
+<script>
+    function tounicode(data){
+        if(data == '') return '请输入汉字';
+        var str ='';
+        for(var i=0;i<data.length;i++)
+        {
+            str+="\\u"+parseInt(data[i].charCodeAt(0),10).toString(16);
+        }
+        return str;
+    }
+    function toChinese(data){
+        if(data == '') return '请输入十六进制unicode';
+        data = data.split("\\u");
+        var str ='';
+        for(var i=0;i<data.length;i++)
+        {
+            str+=String.fromCharCode(parseInt(data[i],16).toString(10));
+        }
+        return str;
+    }
+    $(function () {
+        $('.chinese').blur(function () {
+            var data = $(this).val();
+            console.log(data);
+            $(this).parents('.col-sm-6').next('.col-sm-6').find('.codeResult').html(tounicode(data));
+        });
+        $('.code').blur(function () {
+            var data = $(this).val();
+            console.log(data);
+            $(this).parents('.col-sm-6').next('.col-sm-6').find('.chineseResult').html(toChinese(data));
+        });
+    });
+</script>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">汉字转码</div>
+        <div class="panel-body">
+            <div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chinese" rows="2" placeholder="请输入汉字">神经</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>代码</label>
+                            <textarea class="form-control codeResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chinese" rows="2" placeholder="请输入汉字">你没有抓住神！经！猫！！</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>代码</label>
+                            <textarea class="form-control codeResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chinese" rows="2" placeholder="请输入汉字">精神病院长又发神经病了！</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>代码</label>
+                            <textarea class="form-control codeResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chinese" rows="2" placeholder="请输入汉字">您用</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>代码</label>
+                            <textarea class="form-control codeResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chinese" rows="2" placeholder="请输入汉字">步都没有抓住神经猫</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>代码</label>
+                            <textarea class="form-control codeResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chinese" rows="2" placeholder="请输入汉字">已经被困随便走一步</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>代码</label>
+                            <textarea class="form-control codeResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chinese" rows="2" placeholder="请输入汉字">再来一次吧</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>代码</label>
+                            <textarea class="form-control codeResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chinese" rows="6" placeholder="请输入汉字">塞外高手 神精病博士 神经大神 你是我的小苹果 院长派来的救兵 精神病院长 扫地僧 传说中的高手 风骚的少年 白天睡觉喵 隔壁王伯伯</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>代码</label>
+                            <textarea class="form-control codeResult" rows="6"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chinese" rows="5" placeholder="请输入汉字">神经大条 我是处女座的 停不下来 你是我的小苹果 喵了个咪的 M78星人 凤姐夫 笑而不语</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>代码</label>
+                            <textarea class="form-control codeResult" rows="5"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chinese" rows="2" placeholder="请输入汉字">步抓住了神经猫</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>代码</label>
+                            <textarea class="form-control codeResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chinese" rows="2" placeholder="请输入汉字">神经全国排名</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>代码</label>
+                            <textarea class="form-control codeResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chinese" rows="2" placeholder="请输入汉字">击败了精神病院</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>代码</label>
+                            <textarea class="form-control codeResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chinese" rows="2" placeholder="请输入汉字">的精神病患者</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>代码</label>
+                            <textarea class="form-control codeResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chinese" rows="2" placeholder="请输入汉字">获得称号：</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>代码</label>
+                            <textarea class="form-control codeResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chinese" rows="2" placeholder="请输入汉字">思维广</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>代码</label>
+                            <textarea class="form-control codeResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chinese" rows="2" placeholder="请输入汉字">步抓住了神经猫</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>代码</label>
+                            <textarea class="form-control codeResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr/>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">code转汉字</div>
+        <div class="panel-body">
+            <div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>code</label>
+                            <textarea class="form-control code" rows="2" placeholder="请输入code">\u795e\u7ecf</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chineseResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>code</label>
+                            <textarea class="form-control code" rows="2" placeholder="请输入code">\u601d\u7ef4\u5e7f</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>汉字</label>
+                            <textarea class="form-control chineseResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
