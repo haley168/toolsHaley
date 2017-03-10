@@ -499,6 +499,20 @@
         function round(par,n){
             return Math.round(par*Math.pow(10,n))/Math.pow(10,n);
         }
+        function sumPerson(){
+            var sizeFood=7;
+            var sizePerson=10;
+            var n=0;
+            for(var i=0;i<sizePerson;i++){
+                for(var j=0;j<sizeFood;j++){
+                    if($('#price'+j+'_'+i).val()!=''){
+                        n+=1;
+                    }
+                    
+                }
+            }
+            return n;
+        }
     });
 </script>
 </body>
