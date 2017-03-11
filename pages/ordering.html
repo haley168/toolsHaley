@@ -480,13 +480,13 @@
             var sum=0;
             for(var i=0;i<6;i++){
                 free.push($('#free'+i).val()/1);
-                freeNum+=free[i];
+                freeSum+=free[i];
             }
 //            运费及餐盒费
             var freightAndBox=inputFreight/n+inputBox/n;
             for(var j=0;j<size;j++){
                 price.push($('#price'+j+'_0').val()/1+$('#price'+j+'_1').val()/1+$('#price'+j+'_2').val()/1+$('#price'+j+'_3').val()/1+$('#price'+j+'_4').val()/1+$('#price'+j+'_5').val()/1+$('#price'+j+'_6').val()/1);
-                freeNum+=price[j];
+                priceSum+=price[j];
                 p.push(price[j]-price[j]/priceSum*freeSum+(price[j]>0?freightAndBox:0));
                 $('#p'+j).html(round(p[j],1));
                 sum+=p[j];
