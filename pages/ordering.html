@@ -468,25 +468,23 @@
 <script>
     $(function(){
         function cal(){
-            var n=$('#inputNum').val()/1;
-            var inputBox=$('#inputBox').val()/1;
-            var inputFreight=$('#inputFreight').val()/1;
-            var size=10;
+            var n=$('#inputNum').val()/1;//人数
+            var inputBox=$('#inputBox').val()/1;//餐盒
+            var inputFreight=$('#inputFreight').val()/1;//运费
+            var personSize=10;
+            var freeSize=6;
             var p=[];
-            var free=[];
             var freeSum=0;
             var price=[];
             var priceSum=0;
             var sum=0;
-            for(var i=0;i<6;i++){
-                free.push($('#free'+i).val()/1);
-                freeSum+=free[i];
+            for(var i=0;i<freeSize;i++){
+                freeSum+=$('#free'+i).val()/1;
             }
 //            运费及餐盒费
             var freightAndBox=inputFreight/n+inputBox/n;
-            for(var j=0;j<size;j++){
-                price.push($('#price'+j+'_0').val()/1+$('#price'+j+'_1').val()/1+$('#price'+j+'_2').val()/1+$('#price'+j+'_3').val()/1+$('#price'+j+'_4').val()/1+$('#price'+j+'_5').val()/1+$('#price'+j+'_6').val()/1);
-                priceSum+=price[j];
+            for(var j=0;j<personSize;j++){
+                priceSum+=$('#price'+j+'_0').val()/1+$('#price'+j+'_1').val()/1+$('#price'+j+'_2').val()/1+$('#price'+j+'_3').val()/1+$('#price'+j+'_4').val()/1+$('#price'+j+'_5').val()/1+$('#price'+j+'_6').val()/1;
                 p.push(price[j]-price[j]/priceSum*freeSum+(price[j]>0?freightAndBox:0));
                 $('#p'+j).html(round(p[j],1));
                 sum+=p[j];
