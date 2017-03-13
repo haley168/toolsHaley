@@ -53,7 +53,7 @@
                         <input type="text" class="form-control" placeholder="菜品名称">
                     </div>
                     <div class="col-sm-1">
-                        <input type="number" class="form-control"  id="price0_0" placeholder="菜一" min="0" max="99">
+                        <input type="number" class="form-control" value="20" id="price0_0" placeholder="菜一" min="0" max="99">
                     </div>
                     <div class="col-sm-1">
                         <input type="number" class="form-control" value="" id="price0_1" placeholder="菜二" min="0" max="99">
@@ -83,7 +83,7 @@
                         <input type="text" class="form-control" placeholder="菜品名称">
                     </div>
                     <div class="col-sm-1">
-                        <input type="number" class="form-control"  id="price1_0" placeholder="菜一" min="0" max="99">
+                        <input type="number" class="form-control" value="30" id="price1_0" placeholder="菜一" min="0" max="99">
                     </div>
                     <div class="col-sm-1">
                         <input type="number" class="form-control" value="" id="price1_1" placeholder="菜二" min="0" max="99">
@@ -350,7 +350,7 @@
                 <div class="form-group">
                     <label for="inputNum" class="col-sm-1 control-label text-primary">人数</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="inputNum"  placeholder="请输入人数" min="2" max="99">
+                        <input type="number" class="form-control" id="inputNum" value="2" placeholder="请输入人数" min="2" max="99">
                     </div>
                 </div>
                 <div class="row">
@@ -488,15 +488,19 @@
             for(var j=0;j<personSize;j++){
 				for(var k=0;k<priceSize;k++){
 					priceSum+=$('#price'+j+'_'+k).val()/1;
+					price[j]+=$('#price'+j+'_'+k).val();
+					console.log($('#price'+j+'_'+k).val());
 				}
+				
             }
+			console.log(price);
 			for(var x=0;x<personSize;x++){
                 p.push(price[x]-price[x]/priceSum*freeSum+(price[x]>0?freightAndBox:0));
                 $('#p'+x).html(round(p[x],1));
-                sum+=p[x];
+                sum+=p[x]/1;
             }
             $('#sum').val(sum);
-		console.log(sumPerson());
+			console.log(sumPerson());
         }
         $('#cal').click(function(){
             cal();
@@ -513,8 +517,7 @@
                     if($('#price'+j+'_'+i).val()!=''){
                         n+=1;
                     }
-                    continue;
-                    
+                    break;
                 }
             }
             return n;
