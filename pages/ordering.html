@@ -489,11 +489,14 @@
 				for(var k=0;k<priceSize;k++){
 					priceSum+=$('#price'+j+'_'+k).val()/1;
 				}
-                p.push(price[j]-price[j]/priceSum*freeSum+(price[j]>0?freightAndBox:0));
-                $('#p'+j).html(round(p[j],1));
-                sum+=p[j];
+            }
+			for(var x=0;x<personSize;x++){
+                p.push(price[x]-price[x]/priceSum*freeSum+(price[x]>0?freightAndBox:0));
+                $('#p'+x).html(round(p[x],1));
+                sum+=p[x];
             }
             $('#sum').val(sum);
+		console.log(sumPerson());
         }
         $('#cal').click(function(){
             cal();
