@@ -473,6 +473,7 @@
             var inputFreight=$('#inputFreight').val()/1;//运费
             var personSize=10;
             var freeSize=6;
+			var priceSize=7;
             var p=[];
             var freeSum=0;
             var price=[];
@@ -483,8 +484,11 @@
             }
 //            运费及餐盒费
             var freightAndBox=inputFreight/n+inputBox/n;
+
             for(var j=0;j<personSize;j++){
-                priceSum+=$('#price'+j+'_0').val()/1+$('#price'+j+'_1').val()/1+$('#price'+j+'_2').val()/1+$('#price'+j+'_3').val()/1+$('#price'+j+'_4').val()/1+$('#price'+j+'_5').val()/1+$('#price'+j+'_6').val()/1;
+				for(var k=0;k<priceSize;k++){
+					priceSum+=$('#price'+j+'_'+k).val()/1;
+				}
                 p.push(price[j]-price[j]/priceSum*freeSum+(price[j]>0?freightAndBox:0));
                 $('#p'+j).html(round(p[j],1));
                 sum+=p[j];
@@ -506,6 +510,7 @@
                     if($('#price'+j+'_'+i).val()!=''){
                         n+=1;
                     }
+                    continue;
                     
                 }
             }
