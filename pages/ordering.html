@@ -53,7 +53,7 @@
                         <input type="text" class="form-control" placeholder="菜品名称">
                     </div>
                     <div class="col-sm-1">
-                        <input type="number" class="form-control" value="20" id="price0_0" placeholder="菜一" min="0" max="99">
+                        <input type="number" class="form-control" value="" id="price0_0" placeholder="菜一" min="0" max="99">
                     </div>
                     <div class="col-sm-1">
                         <input type="number" class="form-control" value="" id="price0_1" placeholder="菜二" min="0" max="99">
@@ -83,7 +83,7 @@
                         <input type="text" class="form-control" placeholder="菜品名称">
                     </div>
                     <div class="col-sm-1">
-                        <input type="number" class="form-control" value="30" id="price1_0" placeholder="菜一" min="0" max="99">
+                        <input type="number" class="form-control" value="" id="price1_0" placeholder="菜一" min="0" max="99">
                     </div>
                     <div class="col-sm-1">
                         <input type="number" class="form-control" value="" id="price1_1" placeholder="菜二" min="0" max="99">
@@ -350,7 +350,7 @@
                 <div class="form-group">
                     <label for="inputNum" class="col-sm-1 control-label text-primary">人数</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="inputNum" value="2" placeholder="请输入人数" min="2" max="99">
+                        <input type="number" class="form-control" id="inputNum" disabled>
                     </div>
                 </div>
                 <div class="row">
@@ -369,7 +369,7 @@
                         <div class="form-group">
                             <label for="inputFreight" class="col-sm-2 control-label text-primary">配送费</label>
                             <div class="col-sm-8">
-                                <input type="number" class="form-control" id="inputFreight" value="0" placeholder="请输入配送费" min="0" max="100">
+                                <input type="number" class="form-control" id="inputFreight" value="" placeholder="请输入配送费" min="0" max="100">
                             </div>
                             <div class="col-sm-2">
                                 <!--<span>人数不能为空</span>-->
@@ -468,12 +468,12 @@
 <script>
     $(function(){
         function cal(){
-            var n=$('#inputNum').val()/1;//人数
+            var n=0;//人数
             var inputBox=$('#inputBox').val()/1;//餐盒
             var inputFreight=$('#inputFreight').val()/1;//运费
             var personSize=10;
             var freeSize=6;
-			var priceSize=7;
+	    var priceSize=7;
             var p=[];
             var freeSum=0;
             var price=[];
@@ -482,25 +482,27 @@
             for(var i=0;i<freeSize;i++){
                 freeSum+=$('#free'+i).val()/1;
             }
-//            运费及餐盒费
-            var freightAndBox=inputFreight/n+inputBox/n;
+			
 
             for(var j=0;j<personSize;j++){
+				var _price=0;
 				for(var k=0;k<priceSize;k++){
 					priceSum+=$('#price'+j+'_'+k).val()/1;
-					price[j]+=$('#price'+j+'_'+k).val();
-					console.log($('#price'+j+'_'+k).val());
+					_price+=$('#price'+j+'_'+k).val()/1>0?$('#price'+j+'_'+k).val()/1:0;
 				}
-				
+				price.push(_price);
+				_price=0;
             }
-			console.log(price);
+			n=sumPerson(price);
+			$('#inputNum').val(n);
+//            运费及餐盒费
+            var freightAndBox=inputFreight/n+inputBox/n;
 			for(var x=0;x<personSize;x++){
                 p.push(price[x]-price[x]/priceSum*freeSum+(price[x]>0?freightAndBox:0));
                 $('#p'+x).html(round(p[x],1));
                 sum+=p[x]/1;
             }
             $('#sum').val(sum);
-			console.log(sumPerson());
         }
         $('#cal').click(function(){
             cal();
@@ -508,18 +510,13 @@
         function round(par,n){
             return Math.round(par*Math.pow(10,n))/Math.pow(10,n);
         }
-        function sumPerson(){
-            var sizeFood=7;
-            var sizePerson=10;
-            var n=0;
-            for(var i=0;i<sizePerson;i++){
-                for(var j=0;j<sizeFood;j++){
-                    if($('#price'+j+'_'+i).val()!=''){
-                        n+=1;
-                    }
-                    break;
-                }
-            }
+        function sumPerson(price){
+			var n=0;
+            for(var i=0;i<price.length;i++){
+				if(price[i]!=0){
+					n++;
+				}
+			}
             return n;
         }
     });
