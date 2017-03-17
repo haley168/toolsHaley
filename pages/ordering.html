@@ -473,7 +473,7 @@
             var inputFreight=$('#inputFreight').val()/1;//运费
             var personSize=10;
             var freeSize=6;
-	    var priceSize=7;
+            var priceSize=7;
             var p=[];
             var freeSum=0;
             var price=[];
@@ -482,24 +482,24 @@
             for(var i=0;i<freeSize;i++){
                 freeSum+=$('#free'+i).val()/1;
             }
-			
+
 
             for(var j=0;j<personSize;j++){
-				var _price=0;
-				for(var k=0;k<priceSize;k++){
-					priceSum+=$('#price'+j+'_'+k).val()/1;
-					_price+=$('#price'+j+'_'+k).val()/1>0?$('#price'+j+'_'+k).val()/1:0;
-				}
-				price.push(_price);
-				_price=0;
+                var _price=0;
+                for(var k=0;k<priceSize;k++){
+                    priceSum+=$('#price'+j+'_'+k).val()/1;
+                    _price+=$('#price'+j+'_'+k).val()/1>0?$('#price'+j+'_'+k).val()/1:0;
+                }
+                price.push(_price);
+                _price=0;
             }
-			n=sumPerson(price);
-			$('#inputNum').val(n);
+            n=sumPerson(price);
+            $('#inputNum').val(n);
 //            运费及餐盒费
             var freightAndBox=inputFreight/n+inputBox/n;
-			for(var x=0;x<personSize;x++){
+            for(var x=0;x<personSize;x++){
                 p.push(price[x]-price[x]/priceSum*freeSum+(price[x]>0?freightAndBox:0));
-                $('#p'+x).html(round(p[x],1));
+                $('#p'+x).html(round2(round(p[x],1)));
                 sum+=p[x]/1;
             }
             $('#sum').val(sum);
@@ -510,13 +510,20 @@
         function round(par,n){
             return Math.round(par*Math.pow(10,n))/Math.pow(10,n);
         }
+        function round2(a){
+            if(a%10<0.5){
+                return a-a%10+0.5
+            }else{
+                return a-a%10+1
+            }
+        }
         function sumPerson(price){
-			var n=0;
+            var n=0;
             for(var i=0;i<price.length;i++){
-				if(price[i]!=0){
-					n++;
-				}
-			}
+                if(price[i]!=0){
+                    n++;
+                }
+            }
             return n;
         }
     });
