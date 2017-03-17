@@ -499,7 +499,7 @@
             var freightAndBox=inputFreight/n+inputBox/n;
             for(var x=0;x<personSize;x++){
                 p.push(price[x]-price[x]/priceSum*freeSum+(price[x]>0?freightAndBox:0));
-                $('#p'+x).html(round2(round(p[x],1)));
+                $('#p'+x).html(round(p[x],1));
                 sum+=p[x]/1;
             }
             $('#sum').val(sum);
