@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width,height=device-height">
+    <meta charset="UTF-8">
+    <meta name="Author" content="haley">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="../js/goToHome.js"></script>
+    <title>大小写转化</title>
+    <style>
+        .container{
+            background: #f2f2f2;
+        }
+        .fr{
+            float:right;
+        }
+    </style>
+</head>
+<body>
+<script>
+    function _toLowerCase(data){
+       if(data == '') return '请输入大写字母';
+        return data.toLowerCase()+"En";
+    }
+    function _toUpperCase(data){
+        if(data == '') return '请输入小写字母';
+        return data.toUpperCase();
+    }
+    $(function () {
+        $('.upperCase').blur(function () {
+            var data = $(this).val();
+            console.log(data);
+            $(this).parents('.col-sm-6').next('.col-sm-6').find('.upperResult').val(_toLowerCase(data));
+        });
+        $('.lowerCase').blur(function () {
+            var data = $(this).val();
+            console.log(data);
+            $(this).parents('.col-sm-6').next('.col-sm-6').find('.lowerResult').val(_toUpperCase(data));
+        });
+    });
+</script>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">大写转小写</div>
+        <div class="panel-body">
+            <div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>大写</label>
+                            <textarea class="form-control upperCase" rows="2" placeholder="请输入大写字母">CHINA</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>小写</label>
+                            <textarea class="form-control upperResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>大写</label>
+                            <textarea class="form-control upperCase" rows="2" placeholder="请输入大写字母">CHINA</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>小写</label>
+                            <textarea class="form-control upperResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>大写</label>
+                            <textarea class="form-control upperCase" rows="2" placeholder="请输入大写字母">CHINA</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>小写</label>
+                            <textarea class="form-control upperResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr/>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">小写转大写</div>
+        <div class="panel-body">
+            <div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>小写字母</label>
+                            <textarea class="form-control lowerCase" rows="2" placeholder="请输入小写字母">china</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>大写字母</label>
+                            <textarea class="form-control lowerResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>小写字母</label>
+                            <textarea class="form-control lowerCase" rows="2" placeholder="请输入小写字母">china</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>大写字母</label>
+                            <textarea class="form-control lowerResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>小写字母</label>
+                            <textarea class="form-control lowerCase" rows="2" placeholder="请输入小写字母">china</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>大写字母</label>
+                            <textarea class="form-control lowerResult" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
