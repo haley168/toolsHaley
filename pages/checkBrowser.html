@@ -1,0 +1,86 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width,height=device-height">
+    <meta charset="UTF-8">
+    <meta name="Author" content="haley">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="../js/goToHome.js"></script>
+    <title>浏览器版本检查</title>
+<script>
+	var browser="unknown",version="unknown",ua=navigator.userAgent;
+	if(ua.indexOf("Firefox")!=-1){//如果ua中包含Firefox
+		browser="Firefox";//	browser等于Firefox
+	}else if(ua.indexOf("MSIE")!=-1){//否则，如果ua中包含MSIE
+		browser="MSIE";//	browser等于MSIE
+	}else if(ua.indexOf("OPR")!=-1){//否则，如果ua中包含OPR
+		browser="Opera";//  browser等于Opera
+	}else if(ua.indexOf("Chrome")!=-1){//否则，如果ua中包含Chrome
+		browser="Chrome";//	browser等于Chrome
+	}else if(ua.indexOf("Safari")!=-1){//否则，如果ua中包含Safari
+		browser="Safari";//	browser等于Safari
+	}else if(ua.indexOf("Trident")!=-1){//否则，如果ua中包含Trident
+		browser="IE";//  browser等于IE
+	}
+	if(browser!="unknown"){//如果browser!="unknown"
+		if(browser=="IE"){//如果browser是IE
+			var i=ua.indexOf("rv");//	在ua中查找rv的位置i
+		//  截取ua中i+3到i+5的子字符串，转为浮点数，保存到version
+			version=parseFloat(ua.slice(i+3,i+5));
+		}else if(browser=="Opera"){//否则，如果browser是Opera
+			var i=ua.indexOf("OPR");//	在ua中查找OPR的位置i
+		//  截取ua中i+4到i+6的子字符串，转为浮点数，保存到version
+			version=parseFloat(ua.slice(i+4,i+6));
+		}else if(browser=="MSIE"){//否则，如果browser是MSIE
+			if(is360se()){
+				browser="360兼容模式";
+				var i=ua.indexOf("MSIE");//	在ua中查找MSIE的位置i
+		//  截取ua中i+3到i+5的子字符串，转为浮点数，保存到version
+				version=ua.slice(i+5,i+8);
+			//print();
+			}else{
+				browser="MSIE";//	browser等于MSIE
+			}
+		}else{//否则
+			var i=ua.indexOf(browser);//	在ua中查找?的位置i
+		//  截取ua中i+?到i+?+3的子字符串，转为浮点数保存到version
+			version=parseFloat(
+				ua.slice(i+browser.length+1,i+browser.length+4)
+			);
+		}
+	}
+	$(function(){
+		print();
+	});
+	function is360se(){
+		var where = "suffixes", value = "dll", name = "description", nameReg = /fancy/;
+		var mimeTypes = window.navigator.mimeTypes, i;
+		for (i in mimeTypes) {
+			if (mimeTypes[i][where] == value) {
+				if (nameReg.test(mimeTypes[i][name])) return false;
+				}
+			}
+		return true;
+	}
+	function print(){
+		$(".num").html(navigator.userAgent);
+		$(".browser").html("您的浏览器为："+browser+"，版本号为："+version);
+	}
+</script>
+</head>
+<body>
+	<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">浏览器版本判断</div>
+        <div class="panel-body">
+            <h2 class="num"></h2>
+            <h2 class="browser"></h2>
+        </div>
+    </div>
+</div>
+</body>
+</html>
