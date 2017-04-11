@@ -1,0 +1,71 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta id="viewport" name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <title>横竖屏切换检测</title>
+    <style type="text/css">
+		html,body{width:100%;height:100%;margin:0;padding:0;}
+		.orientationBox{position:fixed;top:0;left:0;width:100%;height:100%;background:#f2f2f2;border:1px solid #f00;display:none;}
+		.tipContent{position:absolute;padding:30px;}
+    </style>
+</head>
+<body>
+<p>内容</p>
+<div class="orientationBox">
+<div class="tipContent">
+    请将手机竖屏后使用本软件！谢谢！
+</div>
+</div>
+<!--监测旋转的角度-->
+<script>
+    var w= window.screen.width;
+    var h= window.screen.height;
+    window.addEventListener("orientationchange", function() {
+// 宣布新方向的数值
+        //alert(window.orientation);
+        var or=window.orientation;
+        var state=0;
+        switch (or) {
+            case 0:
+                //alert("肖像模式 0,screen-width: " + screen.width + "; screen-height:" + screen.height);
+                //rotateScreen($('body'),or);
+                //translateScreen($('html'),h);
+				$('.orientationBox').fadeOut();
+                break;
+            case -90:
+                //alert("左旋 -90,screen-width: " + screen.width + "; screen-height:" + screen.height);
+                //rotateScreen($('body'),-or);
+                //translateScreen($('html'),h);
+				$('.orientationBox').fadeIn();
+                break;
+                state=-90;
+            case 90:
+                //alert("右旋 90,screen-width: " + screen.width + "; screen-height:" + screen.height);
+                //rotateScreen($('body'),or);
+                //translateScreen($('html'),h);
+				$('.orientationBox').fadeIn();
+                break;
+            case 180:
+                //alert("风景模式 180,screen-width: " + screen.width + "; screen-height:" + screen.height);
+				$('.orientationBox').fadeIn();
+                break;
+        }
+        if(or){
+            //alert('转一下屏幕');
+        }else{
+            //rotateScreen($('body'),or);
+        }
+    }, false);
+    function rotateScreen(elem,deg){
+        elem.css('-webkit-transform', 'rotate(' + deg + 'deg)');
+    }
+    function translateScreen(elem,px){
+        elem.css('transform', 'translate(' + px + 'px)');
+    }
+</script>
+</body>
+</html>
