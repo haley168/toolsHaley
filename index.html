@@ -15,6 +15,8 @@
         .container{
             padding:20px 10px;
         }
+        .bth-hoverShow img{display:none;}
+        .bth-hoverShow:hover img{display:block;}
     </style>
 
 </head>
@@ -27,9 +29,12 @@
     <a href="pages/upper2lower.html" class="btn btn-info">字母大小写转化</a>
     <a href="pages/checkBrowser.html" class="btn btn-info">浏览器版本检测</a>
     <a href="https://haley168.github.io/howToUseGithub/" class="btn btn-info">使用github发布公开页面的方法</a>
-    <a href="pages/orientation.html" class="btn btn-info">手机app横向后提示</a>
+    
     <br><br>
     <a href="http://tool.oschina.net/commons?type=3" class="btn btn-info">常用颜色值对照表（外链）</a>
+    <br><br>
+    <h2 class="text-info">手机端</h2>
+    <a href="pages/orientation.html" class="btn btn-info bth-hoverShow">手机app横向后提示<img src=""></a>
 </div>
     <br>
     <div style="border-bottom:1px solid #666;"></div>
@@ -39,5 +44,13 @@
     <a href="#" class="btn btn-info">other（维护中）</a>
     <a href="#" class="btn btn-info">other（维护中）</a>
 </div>
+   <!-- <script>
+      $('.bth-orientation').hover(
+       function(){
+        },
+       function(){
+        }
+      );
+    </script>-->
 </body>
 </html>
