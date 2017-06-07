@@ -5,7 +5,8 @@
   window.addEventListener('load',function(){
      var links=[
         {link:"https://haley168.github.io/toolsHaley/index.html",t:"返回首页"},//link为页面的地址，t为跳转页面的提示文字，数量依据需求添加
-        {link:"#",t:"下移10px",class:"btnDown"}
+        {link:"#",t:"下移10px",class:"btnDown"},
+        {link:"#",t:"左移10px",class:"btnLeft"}
     ];
     var len=links.length;
     var ul = document.createElement("ul");//js新建元素
@@ -22,14 +23,20 @@
     +'ul.haleyMenu li h5{text-align:center;padding:15px 8px;margin:0;font-weight: normal;font-family: "微软雅黑", "宋体";}'
     +'</style>'
     +lis;
+
     document.body.appendChild(ul);
+    var $ul=$('ul.haleyMenu');
     $('.btnDown').click(function(){
-      var $ul=$(this).parents('ul');
       var top=$ul.position().top;
-      console.log(top);
-      console.log($ul.html());
       $ul.css({
         'top':top+30
+      });
+    });
+    $('.btnLeft').click(function(){
+      var left=$ul.position().left;
+      $ul.css({
+        'left':left-30,
+        'right':'auto'
       });
     });
   });
