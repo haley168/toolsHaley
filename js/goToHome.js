@@ -4,7 +4,7 @@
    */
   window.addEventListener('load',function(){
      var links=[
-        {link:"https://haley168.github.io/toolsHaley/index.html",t:"返回首页"},//link为页面的地址，t为跳转页面的提示文字，数量依据需求添加
+        {link:"http://haley1688.oschina.io/toolshaley/",t:"返回首页"},//link为页面的地址，t为跳转页面的提示文字，数量依据需求添加
         {link:"#",t:"下移10px",class:"btnDown"},
         {link:"#",t:"左移10px",class:"btnLeft"}
     ];
